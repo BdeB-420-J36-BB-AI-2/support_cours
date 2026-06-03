@@ -1,0 +1,6 @@
+[submodule "External"]
+	path = External
+	url = https://KhajlaouiBdeB@github.com/BdeB-420-J34-BB/External.git
+[submodule "Tools"]
+	path = Tools
+	url = https://KhajlaouiBdeB@github.com/BdeB-420-J34-BB/Tools.git
