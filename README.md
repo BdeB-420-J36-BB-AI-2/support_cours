@@ -8,11 +8,11 @@ Template Solution
 Generate Solution
 -----------------
 * Prerequisite
-    1. Install MINGW terminal through Git -> https://gitforwindows.org/
-    2. Install latest CMake version -> https://cmake.org/download/  
+    1. Install latest MINGW version -> Tools/InstallOrUpdateMinGW.bat
+    2. Install latest CMake version -> Tools/InstallOrUpdateCMake.bat  
 
 * Generate project
-    * Execute GenerateProject.sh in a Git MINGW terminal
+    * Execute GenerateAllProjects.sh in a Git MINGW terminal
     * Open generated solution in Build directory
 
 Build Solution (Optional)
