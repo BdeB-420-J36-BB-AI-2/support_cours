@@ -19,5 +19,6 @@ namespace Core
 
     protected:
         GameBase();
+        int _loop;
     };
 }
