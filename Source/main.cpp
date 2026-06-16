@@ -9,10 +9,11 @@ vcxproj properties setup check list
 
 #include <raylib.h>
 #include <Code_Utilities_Light_v2.h>
+
+#include "Game/GameTest.h"
 using namespace BdB;
 
 int main()
 {
-    cout << "Hello BdeB!" << std::endl;
-    pressToContinue();
+    Core::GameTest{}.run();
 }
