@@ -16,4 +16,15 @@ using namespace BdB;
 int main()
 {
     Core::GameTest{}.run();
+    // TODO: breakdown
+    // - ETQ developpeur, je veux pouvoir créer un arbre de comportement pour mon jeu
+    //  - task 1 : creer une classe abstraite "Node" qui sera la base de tous les noeuds de l'arbre de comportement --> OK 
+    //  - task 2 : creer une classe "CompositeNode" qui sera la base de tous les noeuds composites (Sequence, Selector, etc.)
+    //  - task 3 : creer une classe "LeafNode" qui sera la base de tous les noeuds feuilles (Action, Condition, etc.)
+    //  - task 4 : creer une classe "BehaviorTree" qui sera la base de l'arbre de comportement
+    // - ETQ  developpeur, je veux pouvoir rajouter des noeuds à mon arbre de comportement
+    // - ETQ developpeur, je veux pouvoir executer mon arbre de comportement
+    // - ETQ Game designer, je veux pouvoir utiliser une interface graphique pour créer mon arbre de comportement
+    // - ETQ joueur, je veux pouvoir voir les NPC interagir avec l'environnement
+
 }
