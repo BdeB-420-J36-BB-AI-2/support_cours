@@ -8,6 +8,6 @@ namespace BehaviourTree
     public:
         virtual ~LeafNode() = default;
     protected:
-        LeafNode() override = default;
+        LeafNode() = default;
     };
 }

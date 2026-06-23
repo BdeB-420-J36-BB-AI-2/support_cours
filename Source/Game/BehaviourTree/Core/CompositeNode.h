@@ -16,7 +16,6 @@ namespace BehaviourTree
 
     protected:
         std::vector<Node*> _nodes;
-        CompositeNode() override = default; 
-
+        CompositeNode() = default;
     };
 }
