@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Node.h"
-#include <../Source/Core/Globals.h>
 
 #include "../Composites.h"
 #include "../DummyLeaves.h"
@@ -17,7 +16,9 @@ namespace BehaviourTree
     public:
         BehaviourTree()
         {
-            TestTree();
+            //TestSequence();
+            //TestSelector();
+            TestComposites();
         };
 
         ~BehaviourTree()
@@ -41,14 +42,40 @@ namespace BehaviourTree
 
     private:
         // Testing case for the tree, can be replaced with a more complex tree structure
-        void TestTree()
+        void TestSequence()
         {
             auto sn = new Sequence();
             sn->add(new DummySuccess());
-            sn->add(new DummySuccess());
+            sn->add(new DummyFail());
             sn->add(new DummySuccess());
 
             _rootNode = sn;
+        }
+
+        void TestSelector()
+        {
+            auto sn = new Selector();
+            sn->add(new DummySuccess());
+            sn->add(new DummyFail());
+            sn->add(new DummyFail());
+
+            _rootNode = sn;
+        }
+
+        void TestComposites()
+        {
+            auto sln = new Selector();
+            auto sqn = new Sequence();
+
+            sqn->add(new DummySuccess());
+            sqn->add(sln);
+            sqn->add(new DummySuccess());
+
+            sln->add(new DummyFail());
+            sln->add(new DummyFail());
+            sln->add(new DummyFail());
+
+            _rootNode = sqn;
         }
     };
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "../../Core/Globals.h"
 #include "Core/CompositeNode.h"
 
 namespace BehaviourTree
@@ -8,6 +9,7 @@ namespace BehaviourTree
     public:
         NodeState tick() override
         {
+            Core::log("Sequence:");
             for (auto node : _nodes)
             {
                 if (node->tick() == NodeState::FAILURE)
@@ -22,6 +24,7 @@ namespace BehaviourTree
     public:
         NodeState tick() override
         {
+            Core::log("Selector:");
             for (auto node : _nodes)
             {
                 if (node->tick() == NodeState::SUCCESS)
