@@ -23,16 +23,18 @@ endif()
 # configure header file to pass version number
 configure_file("${PROJECT_ROOT_DIR}/Source/CMakeConfig.h.in" "${PROJECT_ROOT_DIR}/Source/CMakeConfig.h")
 
-# Get Source files path
-file(GLOB_RECURSE HEADER_FILES_CLIENT "${PROJECT_ROOT_DIR}/Source/*.h")
-file(GLOB_RECURSE SOURCE_FILES_CLIENT "${PROJECT_ROOT_DIR}/Source/*.cpp")
-
 # Add source to your executable :
-add_executable(${PROJECT_NAME} ${HEADER_FILES_CLIENT} ${SOURCE_FILES_CLIENT})
+add_executable(${PROJECT_NAME})
 
 # Setup generated project
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT RaylibBasic)
+
+# Add sources (sets SOURCE_HEADERS_CLIENT and SOURCE_CPPS_CLIENT in this scope)
+add_subdirectory(Source)
+
+# Replicate the Source folder hierarchy as VS solution filters
+source_group(TREE "${PROJECT_ROOT_DIR}/Source" PREFIX "Source" FILES ${SOURCE_HEADERS_CLIENT} ${SOURCE_CPPS_CLIENT})
 
 # Add libraries HEADER
 target_include_directories(${PROJECT_NAME} PUBLIC "${EXTERNAL_ROOT_DIR}/raylib/include")
