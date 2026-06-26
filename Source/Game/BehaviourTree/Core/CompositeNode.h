@@ -14,6 +14,11 @@ namespace BehaviourTree
                 delete node;
         }
 
+        void add(Node* node)
+        {
+            _nodes.push_back(node);
+        }
+
     protected:
         std::vector<Node*> _nodes;
         CompositeNode() = default;
