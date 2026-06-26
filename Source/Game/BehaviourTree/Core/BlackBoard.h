@@ -3,7 +3,7 @@
 #include <map>
 #include <string>
 
-namespace BehaviorTree
+namespace BehaviourTree
 {
     class BlackBoard
     {
