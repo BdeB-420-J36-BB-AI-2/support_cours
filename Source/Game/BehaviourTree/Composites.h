@@ -7,12 +7,12 @@ namespace BehaviourTree
     class Sequence : public CompositeNode
     {
     public:
-        NodeState tick() override
+        NodeState tick(const BehaviorTree::BlackBoard& bb) override
         {
             Core::log("Sequence:");
             for (auto node : _nodes)
             {
-                if (node->tick() == NodeState::FAILURE)
+                if (node->tick(bb) == NodeState::FAILURE)
                     return NodeState::FAILURE;
             }
             return NodeState::SUCCESS;
@@ -22,12 +22,12 @@ namespace BehaviourTree
     class Selector : public CompositeNode
     {
     public:
-        NodeState tick() override
+        NodeState tick(const BehaviorTree::BlackBoard& bb) override
         {
             Core::log("Selector:");
             for (auto node : _nodes)
             {
-                if (node->tick() == NodeState::SUCCESS)
+                if (node->tick(bb) == NodeState::SUCCESS)
                     return NodeState::SUCCESS;
             }
             return NodeState::FAILURE;

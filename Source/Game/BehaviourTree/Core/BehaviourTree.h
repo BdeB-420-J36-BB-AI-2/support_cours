@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BlackBoard.h"
 #include "Node.h"
 
 #include "../Composites.h"
@@ -12,6 +13,8 @@ namespace BehaviourTree
     private:
         Node* _rootNode = nullptr;
         bool _complete = false;
+
+        BehaviorTree::BlackBoard _blackboard;
 
     public:
         BehaviourTree()
@@ -31,7 +34,7 @@ namespace BehaviourTree
         {
             _complete = true;
             if (_rootNode)
-                return _rootNode->tick();
+                return _rootNode->tick(_blackboard);
             return NodeState::FAILURE;
         }
 

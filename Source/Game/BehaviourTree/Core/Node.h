@@ -13,7 +13,7 @@ namespace BehaviourTree
     {
     public:
         virtual ~Node() = default;
-        virtual NodeState tick() = 0;
+        virtual NodeState tick(const BehaviorTree::BlackBoard& bb) = 0;
 
     protected:
         Node() = default;
