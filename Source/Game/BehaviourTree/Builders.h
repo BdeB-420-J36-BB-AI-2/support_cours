@@ -69,5 +69,14 @@ namespace BehaviourTree
 
             return bt;
         }
+
+        static BehaviourTree* TestRunningNode()
+        {
+            auto bt = new BehaviourTree();
+            auto sn = new DummyRunning();
+            bt->setRootNode(sn);
+
+            return bt;
+        }
     };
 }

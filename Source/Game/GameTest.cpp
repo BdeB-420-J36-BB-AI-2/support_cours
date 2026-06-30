@@ -15,7 +15,7 @@ namespace Game
         InitWindow(720, 480, "GameTest");
         SetTargetFPS(30);
 
-        _tree = BehaviourTree::Builders::TestSequence();
+        _tree = BehaviourTree::Builders::TestRunningNode();
         _loop = true;
     }
 
@@ -28,8 +28,6 @@ namespace Game
 
     void GameTest::handleInput()
     {
-
-
        // Mouse
        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
            _player.setPosition(GetMouseX(), GetMouseY());
