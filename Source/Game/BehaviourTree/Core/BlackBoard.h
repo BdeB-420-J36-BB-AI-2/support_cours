@@ -1,14 +1,15 @@
 #pragma once
-#include <condition_variable>
+
 #include <map>
 #include <string>
+#include <any>
 
 namespace BehaviourTree
 {
     class BlackBoard
     {
     private:
-        std::map<std::string, std::condition_variable_any> _data;
+        std::map<std::string, std::any> _data;
     public:
         template<typename T>
             void set(const std::string& key, const T& value)
@@ -17,12 +18,12 @@ namespace BehaviourTree
         }
 
         template<typename T>
-            T get(const std::string& key)
+            T get(const std::string& key, const T& defaultValue)
         {
                 auto it = _data.find(key);
-                if (it != _data.end)
+                if (it != _data.end())
                     return std::any_cast<T>(it->second);
-            return default;
+            return defaultValue;
         }
     };
 }
