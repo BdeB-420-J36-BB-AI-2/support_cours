@@ -28,8 +28,8 @@ namespace BehaviourTree
             auto bt = new BehaviourTree();
 
             auto sn = new Selector();
-            sn->add(new DummySuccess());
             sn->add(new DummyFail());
+            sn->add(new DummySuccess());
             sn->add(new DummyFail());
 
             bt->setRootNode(sn);

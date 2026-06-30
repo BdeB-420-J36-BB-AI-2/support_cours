@@ -9,9 +9,9 @@ namespace BehaviourTree
     {
     private:
         Node* _rootNode = nullptr;
-        bool _complete = false;
 
         BlackBoard _blackboard;
+        NodeState _treeState = NodeState::RUNNING;
 
     public:
         BehaviourTree() = default;
@@ -29,15 +29,17 @@ namespace BehaviourTree
 
         NodeState tick()
         {
-            _complete = true;
-            if (_rootNode)
-                return _rootNode->tick(_blackboard);
-            return NodeState::FAILURE;
+            if (!_rootNode)
+                return NodeState::FAILURE;
+            
+            _treeState = _rootNode->tick(_blackboard);
+            return _treeState;
         }
 
         bool isComplete() const
         {
-            return _complete;
+            // Tree is consider complete if the root node has returned either SUCCESS or FAILURE
+            return _treeState != NodeState::RUNNING;
         };
 
     };

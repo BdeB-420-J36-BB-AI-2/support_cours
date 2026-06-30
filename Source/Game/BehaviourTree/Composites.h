@@ -11,10 +11,11 @@ namespace BehaviourTree
         NodeState tick( BlackBoard& bb) override
         {
             Core::log("Sequence:");
-            for (auto node : _nodes)
+            for (const auto node : _nodes)
             {
-                if (node->tick(bb) == NodeState::FAILURE)
-                    return NodeState::FAILURE;
+                NodeState state = node->tick(bb);
+                if (state != NodeState::SUCCESS)
+                    return state;
             }
             return NodeState::SUCCESS;
         }
@@ -28,8 +29,9 @@ namespace BehaviourTree
             Core::log("Selector:");
             for (auto node : _nodes)
             {
-                if (node->tick(bb) == NodeState::SUCCESS)
-                    return NodeState::SUCCESS;
+                NodeState state = node->tick(bb);
+                if (state != NodeState::FAILURE)
+                    return state;
             }
             return NodeState::FAILURE;
         }
