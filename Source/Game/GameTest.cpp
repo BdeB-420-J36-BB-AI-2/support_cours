@@ -15,7 +15,7 @@ namespace Game
         InitWindow(720, 480, "GameTest");
         SetTargetFPS(30);
 
-        _tree = BehaviourTree::Builders::TestRunningNode();
+        _tree = Builders::TestRepeater();
         _loop = true;
     }
 
