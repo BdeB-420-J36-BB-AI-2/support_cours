@@ -12,7 +12,7 @@ namespace Game
     GameTest::GameTest() :
         _player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     {
-        InitWindow(720, 480, "GameTest");
+        InitWindow(SCREEN_WIDTH, SCREEN_WIDTH, "GameTest");
         SetTargetFPS(30);
 
         _tree = Builders::TestRepeater();
