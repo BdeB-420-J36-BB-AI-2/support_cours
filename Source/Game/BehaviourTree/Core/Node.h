@@ -15,7 +15,7 @@ namespace BehaviourTree
     {
     public:
         virtual ~Node() = default;
-        virtual NodeState tick(const BlackBoard& bb) = 0;
+        virtual NodeState tick(BlackBoard& bb) = 0;
 
     protected:
         Node() = default;
