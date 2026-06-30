@@ -15,7 +15,7 @@ using namespace BdB;
 
 int main()
 {
-    Core::GameTest{}.run();
+    Game::GameTest{}.run();
     // TODO: breakdown
     // - ETQ developpeur, je veux pouvoir créer un arbre de comportement pour mon jeu
     //  - task 1 : creer une classe abstraite "Node" qui sera la base de tous les noeuds de l'arbre de comportement --> OK 

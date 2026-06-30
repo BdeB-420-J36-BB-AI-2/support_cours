@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Player.h"
 #include "../Core/GameBase.h"
 
 namespace BehaviourTree
@@ -7,11 +8,12 @@ namespace BehaviourTree
     class BehaviourTree;
 }
 
-namespace Core
+namespace Game
 {
     class GameTest : public GameBase
     {
         BehaviourTree::BehaviourTree* _tree;
+        Player _player;
     public:
         GameTest();
         ~GameTest() override;

@@ -5,9 +5,12 @@
 #include "BehaviourTree/Builders.h"
 #include "BehaviourTree/Core/BehaviourTree.h"
 
-namespace Core
+#include "GameConfig.h"
+
+namespace Game
 {
-    GameTest::GameTest()
+    GameTest::GameTest() :
+        _player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     {
         InitWindow(720, 480, "GameTest");
         SetTargetFPS(30);
@@ -25,6 +28,29 @@ namespace Core
 
     void GameTest::handleInput()
     {
+
+
+       // Mouse
+       if (IsMouseButtonDown(MOUSE_LEFT_BUTTON))
+           _player.setPosition(GetMouseX(), GetMouseY());
+
+       // Direction pressed
+       auto directionPressed = IsKeyDown(KEY_LEFT)
+           || IsKeyDown(KEY_RIGHT)
+           || IsKeyDown(KEY_DOWN)
+           || IsKeyDown(KEY_UP)
+           || IsKeyDown(KEY_SPACE);
+
+       if (directionPressed)
+           _player.setDirection(
+               IsKeyDown(KEY_LEFT),
+               IsKeyDown(KEY_RIGHT),
+               IsKeyDown(KEY_DOWN),
+               (IsKeyDown(KEY_UP) || IsKeyDown(KEY_SPACE))
+           );
+       else
+           _player.resetDirection();
+
        int key = GetKeyPressed();
        switch (key)
        {
@@ -38,6 +64,9 @@ namespace Core
     {
         if (!_tree->isComplete())
             _tree->tick();
+
+        // Physics
+        _player.update();
     }
 
     void GameTest::render()
@@ -45,6 +74,7 @@ namespace Core
         BeginDrawing();
         {
             ClearBackground(BLANK);
+            _player.render();
             DrawFPS(20, 20);
         }
         EndDrawing();
