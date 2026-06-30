@@ -27,6 +27,26 @@ namespace Game
             return NodeState::SUCCESS;
         }
     };
+
+    class Delay : public LeafNode
+    {
+        float _duration;
+        float _elapsed = 0.f;
+
+    public:
+        Delay(float duration)
+            : _duration(duration) { }
+
+        NodeState tick(BlackBoard& bb) override
+        {
+            _elapsed += GetFrameTime();
+            if (_elapsed < _duration)
+                return NodeState::RUNNING;
+
+            _elapsed = 0.f;
+            return NodeState::SUCCESS;
+        }
+    };
 }
 
 

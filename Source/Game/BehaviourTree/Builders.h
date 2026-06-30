@@ -97,5 +97,21 @@ namespace BehaviourTree
 
             return bt;
         }
+
+        static BehaviourTree* TestDelay()
+        {
+            auto bt = new BehaviourTree();
+
+            auto sn = new Sequence();
+            auto delay = new Game::Delay(3);
+            sn->add(delay);
+            sn->add(new DummySuccess());
+            sn->add(delay);
+            sn->add(new DummySuccess());
+
+            bt->setRootNode(sn);
+
+            return bt;
+        }
     };
 }

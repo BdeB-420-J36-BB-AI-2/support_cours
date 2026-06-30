@@ -8,7 +8,7 @@ namespace BehaviourTree
     class CompositeNode : public Node
     {
     public:
-        virtual ~CompositeNode() 
+        virtual ~CompositeNode()
         {
             for (Node* node : _nodes) 
                 delete node;

@@ -15,7 +15,7 @@ namespace Game
         InitWindow(SCREEN_WIDTH, SCREEN_WIDTH, "GameTest");
         SetTargetFPS(30);
 
-        _tree = Builders::TestRepeater();
+        _tree = Builders::TestDelay();
         _loop = true;
     }
 
