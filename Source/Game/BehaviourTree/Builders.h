@@ -55,5 +55,19 @@ namespace BehaviourTree
 
             return bt;
         }
+
+        static BehaviourTree* TestBlackBoard()
+        {
+            auto bt = new BehaviourTree();
+
+            auto sn = new Sequence();
+            sn->add(new DummyWriteData());
+            sn->add(new DummyReadData());
+            sn->add(new DummySuccess());
+
+            bt->setRootNode(sn);
+
+            return bt;
+        }
     };
 }
