@@ -12,7 +12,6 @@ namespace BehaviourTree
     public:
         NodeState tick(BlackBoard& bb) override
         {
-            Core::log("Sequence:");
             for (auto i = _currentIndex; i < _nodes.size(); ++i)
             {
                 NodeState state = _nodes[i]->tick(bb);
@@ -34,7 +33,6 @@ namespace BehaviourTree
     public:
         NodeState tick(BlackBoard& bb) override
         {
-            Core::log("Selector:");
             for (auto i = _currentIndex; i < _nodes.size(); ++i)
             {
                 NodeState state = _nodes[i]->tick(bb);

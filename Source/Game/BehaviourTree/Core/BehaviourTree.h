@@ -31,8 +31,11 @@ namespace BehaviourTree
         {
             if (!_rootNode)
                 return NodeState::FAILURE;
-            
+
             _treeState = _rootNode->tick(_blackboard);
+            if (_treeState == NodeState::SUCCESS)
+                Core::log("BT Process complete");
+
             return _treeState;
         }
 
@@ -41,6 +44,5 @@ namespace BehaviourTree
             // Tree is consider complete if the root node has returned either SUCCESS or FAILURE
             return _treeState != NodeState::RUNNING;
         };
-
     };
 }
