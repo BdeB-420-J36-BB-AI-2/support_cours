@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 #include <vector>
 
 #include "Node.h"
@@ -10,7 +11,8 @@ namespace BehaviourTree
     public:
         virtual ~CompositeNode()
         {
-            for (Node* node : _nodes) 
+            std::set uniques(_nodes.begin(), _nodes.end());
+            for (Node* node : uniques)
                 delete node;
         }
 
